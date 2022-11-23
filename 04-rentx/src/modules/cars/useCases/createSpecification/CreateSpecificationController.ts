@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { Response, Request } from 'express';
 import { container } from 'tsyringe';
 
 import { CreateSpecificationUseCase } from './CreateSpecificationUseCase';
