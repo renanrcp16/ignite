@@ -20,6 +20,7 @@ export async function ensureAuthenticated(
   }
 
   const [, token] = authHeader.split(' ');
+
   try {
     const { sub: user_id } = verify(
       token,
@@ -32,6 +33,10 @@ export async function ensureAuthenticated(
     if (!user) {
       throw new AppError('User does not exists', 401);
     }
+
+    req.user = {
+      id: user_id,
+    };
 
     next();
   } catch (error) {
